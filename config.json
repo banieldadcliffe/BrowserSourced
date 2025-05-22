@@ -1,0 +1,1547 @@
+{
+	"automations": [
+		{
+			"id": 0,
+			"name": [
+				"banana_lottery"
+			],
+			"eventName": "twitch.chat.message",
+			"data": {
+				"if": {
+					"type": "operation",
+					"value": "equals",
+					"data": [
+						{
+							"type": "action",
+							"value": "Utils.getRandomNumber",
+							"data": [
+								{
+									"type": "number",
+									"value": 1
+								},
+								{
+									"type": "number",
+									"value": 100
+								}
+							]
+						},
+						{
+							"type": "number",
+							"value": 69
+						}
+					]
+				},
+				"then": {
+					"type": "action[]",
+					"data": [
+						{
+							"type": "action",
+							"value": "Media.play",
+							"data": [
+								{
+									"type": "string",
+									"value": "banana"
+								}
+							]
+						},
+						{
+							"type": "action",
+							"value": "Twitch.send",
+							"data": [
+								{
+									"type": "string",
+									"value": "Banana"
+								},
+								{
+									"type": "property",
+									"value": "msgId"
+								},
+								{
+									"type": "string",
+									"value": "bot"
+								}
+							]
+						}
+					]
+				},
+				"else": {
+					"type": "action[]",
+					"data": []
+				}
+			}
+		},
+		{
+			"id": 1,
+			"name": [
+				"raid_received"
+			],
+			"eventName": "twitch.raid.receive",
+			"data": {
+				"if": {
+					"type": "operation",
+					"value": "greater_or_equals",
+					"data": [
+						{
+							"type": "property",
+							"value": "viewers"
+						},
+						{
+							"type": "number",
+							"value": 2
+						}
+					]
+				},
+				"then": {
+					"type": "action[]",
+					"data": [
+						{
+							"type": "action",
+							"value": "Twitch.API.sendShoutout",
+							"data": [
+								{
+									"type": "property",
+									"value": "userId"
+								}
+							]
+						},
+						{
+							"type": "action",
+							"value": "Utils.wait",
+							"data": [
+								{
+									"type": "number",
+									"value": 21000
+								}
+							]
+						},
+						{
+							"type": "action",
+							"value": "Media.playTwitchClip",
+							"data": [
+								{
+									"type": "property",
+									"value": "userId"
+								}
+							]
+						},
+						{
+							"type": "action",
+							"value": "Twitch.send",
+							"data": [
+								{
+									"type": "string[]",
+									"data": [
+										{
+											"type": "string",
+											"value": "@"
+										},
+										{
+											"type": "property",
+											"value": "userDisplay"
+										},
+										{
+											"type": "string",
+											"value": " thanks for the raid!"
+										}
+									]
+								},
+								{
+									"type": "null",
+									"value": null
+								},
+								{
+									"type": "string",
+									"value": "bot"
+								}
+							]
+						}
+					]
+				},
+				"else": {
+					"type": "action[]",
+					"data": [
+						{
+							"type": "action",
+							"value": "Utils.wait",
+							"data": [
+								{
+									"type": "number",
+									"value": 5000
+								}
+							]
+						},
+						{
+							"type": "action",
+							"value": "Twitch.send",
+							"data": [
+								{
+									"type": "string[]",
+									"data": [
+										{
+											"type": "string",
+											"value": "@"
+										},
+										{
+											"type": "property",
+											"value": "userDisplay"
+										},
+										{
+											"type": "string",
+											"value": " thanks for the raid!"
+										}
+									]
+								},
+								{
+									"type": "null",
+									"value": null
+								},
+								{
+									"type": "string",
+									"value": "bot"
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 2,
+			"name": [
+				"indian_tts"
+			],
+			"eventName": "twitch.chat.message",
+			"data": {
+				"if": {
+					"type": "operation",
+					"value": "equals",
+					"data": [
+						{
+							"type": "action",
+							"value": "DB.get",
+							"data": [
+								{
+									"type": "string",
+									"value": "flags.tts_enabled"
+								}
+							]
+						},
+						{
+							"type": "boolean",
+							"value": true
+						}
+					]
+				},
+				"then": {
+					"type": "action[]",
+					"data": [
+						{
+							"type": "action",
+							"value": "AWS.speakIrc",
+							"data": [
+								{
+									"type": "property",
+									"value": "message"
+								},
+								{
+									"type": "property",
+									"value": "emotes"
+								},
+								{
+									"type": "property",
+									"value": "bitsAmount"
+								},
+								{
+									"type": "string",
+									"value": "Kajal-neural"
+								},
+								{
+									"type": "boolean",
+									"value": true
+								}
+							]
+						}
+					]
+				},
+				"else": {
+					"type": "action[]",
+					"data": []
+				}
+			}
+		}
+	],
+	"storage": [
+		{
+			"key": "effects_set",
+			"data": [
+				{
+					"id": 0,
+					"name": [
+						"ooc"
+					],
+					"response": [
+						{
+							"items": [
+								{
+									"name": "ooc_0"
+								},
+								{
+									"name": "ooc_1"
+								},
+								{
+									"name": "ooc_2"
+								},
+								{
+									"name": "ooc_3"
+								},
+								{
+									"name": "ooc_4"
+								},
+								{
+									"name": "ooc_5"
+								},
+								{
+									"name": "ooc_6"
+								},
+								{
+									"name": "ooc_7"
+								},
+								{
+									"name": "ooc_8"
+								},
+								{
+									"name": "ooc_9"
+								},
+								{
+									"name": "ooc_10"
+								},
+								{
+									"name": "ooc_11"
+								},
+								{
+									"name": "ooc_12"
+								},
+								{
+									"name": "ooc_13"
+								},
+								{
+									"name": "ooc_14"
+								},
+								{
+									"name": "ooc_15"
+								},
+								{
+									"name": "ooc_16"
+								},
+								{
+									"name": "ooc_17"
+								},
+								{
+									"name": "ooc_18"
+								},
+								{
+									"name": "ooc_19"
+								},
+								{
+									"name": "ooc_20"
+								},
+								{
+									"name": "ooc_21"
+								},
+								{
+									"name": "ooc_22"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": 1,
+					"name": [
+						"stats"
+					],
+					"response": [
+						{
+							"min": -1,
+							"max": 12,
+							"singular": "$(#) inch",
+							"plural": "$(#) inches",
+							"items": [
+								{
+									"min": -1,
+									"max": 0,
+									"name": "stats_0"
+								},
+								{
+									"min": 1,
+									"max": 3,
+									"name": "stats_1"
+								},
+								{
+									"min": 4,
+									"max": 6,
+									"name": "stats_2"
+								},
+								{
+									"min": 7,
+									"max": 8,
+									"name": "stats_3"
+								},
+								{
+									"min": 9,
+									"max": 11,
+									"name": "stats_4"
+								},
+								{
+									"min": 12,
+									"max": 12,
+									"name": "stats_5"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "effects",
+			"data": [
+				{
+					"id": 0,
+					"name": [
+						"exit_590406537"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/dick.ogg"
+						}
+					]
+				},
+				{
+					"id": 1,
+					"name": [
+						"banana"
+					],
+					"response": [
+						{
+							"type": "video",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/banana.webm",
+							"dimensions": {
+								"width": 640,
+								"height": 640
+							},
+							"isPositionRandom": true,
+							"position": {
+								"left": 640,
+								"top": 220
+							}
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": [
+						"hydrate"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/water.ogg"
+						}
+					]
+				},
+				{
+					"id": 3,
+					"name": [
+						"assclappers"
+					],
+					"response": [
+						{
+							"type": "video",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/cake.webm",
+							"dimensions": {
+								"width": 1080,
+								"height": 790
+							},
+							"position": {
+								"left": 0,
+								"top": 290
+							}
+						}
+					]
+				},
+				{
+					"id": 4,
+					"name": [
+						"stats_0"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_0.ogg"
+						}
+					]
+				},
+				{
+					"id": 5,
+					"name": [
+						"stats_1"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_1.ogg"
+						}
+					]
+				},
+				{
+					"id": 6,
+					"name": [
+						"stats_2"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_2.ogg"
+						}
+					]
+				},
+				{
+					"id": 7,
+					"name": [
+						"stats_3"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_3.ogg"
+						}
+					]
+				},
+				{
+					"id": 8,
+					"name": [
+						"stats_4"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_4.ogg"
+						}
+					]
+				},
+				{
+					"id": 9,
+					"name": [
+						"stats_5"
+					],
+					"response": [
+						{
+							"type": "video",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stats_5.webm",
+							"dimensions": {
+								"width": 640,
+								"height": 360
+							},
+							"position": {
+								"left": 40,
+								"top": 180
+							}
+						}
+					]
+				},
+				{
+					"id": 10,
+					"name": [
+						"ooc_0"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/colon.ogg"
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": [
+						"ooc_1"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/beefy.ogg"
+						}
+					]
+				},
+				{
+					"id": 12,
+					"name": [
+						"ooc_2"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/bud.ogg"
+						}
+					]
+				},
+				{
+					"id": 13,
+					"name": [
+						"ooc_3"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/little.ogg"
+						}
+					]
+				},
+				{
+					"id": 14,
+					"name": [
+						"ooc_4"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/daddy_chill.ogg"
+						}
+					]
+				},
+				{
+					"id": 15,
+					"name": [
+						"ooc_5"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/lemon_enema.ogg"
+						}
+					]
+				},
+				{
+					"id": 16,
+					"name": [
+						"ooc_6"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/good_wank.ogg"
+						}
+					]
+				},
+				{
+					"id": 17,
+					"name": [
+						"ooc_7"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/starussy.ogg"
+						}
+					]
+				},
+				{
+					"id": 18,
+					"name": [
+						"ooc_8"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/eat_my_nut.ogg"
+						}
+					]
+				},
+				{
+					"id": 19,
+					"name": [
+						"ooc_9"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/good_shit.ogg"
+						}
+					]
+				},
+				{
+					"id": 20,
+					"name": [
+						"ooc_10"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/uwu_1.ogg"
+						}
+					]
+				},
+				{
+					"id": 21,
+					"name": [
+						"ooc_11"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/uwu_2.ogg"
+						}
+					]
+				},
+				{
+					"id": 22,
+					"name": [
+						"ooc_12"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/fibre.ogg"
+						}
+					]
+				},
+				{
+					"id": 23,
+					"name": [
+						"ooc_13"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/missile.ogg"
+						}
+					]
+				},
+				{
+					"id": 24,
+					"name": [
+						"ooc_14"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/bust.ogg"
+						}
+					]
+				},
+				{
+					"id": 25,
+					"name": [
+						"ooc_15"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/jar.ogg"
+						}
+					]
+				},
+				{
+					"id": 26,
+					"name": [
+						"ooc_16"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/daddy_chill_2.ogg"
+						}
+					]
+				},
+				{
+					"id": 27,
+					"name": [
+						"ooc_17"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/stiffy.ogg"
+						}
+					]
+				},
+				{
+					"id": 28,
+					"name": [
+						"ooc_18"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/meat_beat.ogg"
+						}
+					]
+				},
+				{
+					"id": 29,
+					"name": [
+						"ooc_19"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/hoe.ogg"
+						}
+					]
+				},
+				{
+					"id": 30,
+					"name": [
+						"ooc_20"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/moist_hole.ogg"
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": [
+						"ooc_21"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/beautiful.ogg"
+						}
+					]
+				},
+				{
+					"id": 32,
+					"name": [
+						"ooc_22"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/cute.ogg"
+						}
+					]
+				},
+				{
+					"id": 33,
+					"name": [
+						"first"
+					],
+					"response": [
+						{
+							"type": "video",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/cat.webm",
+							"dimensions": {
+								"width": 1920,
+								"height": 1080
+							},
+							"position": {
+								"left": 0,
+								"top": 0
+							}
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": [
+						"entrance_590406537"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/um_daddy.ogg"
+						}
+					]
+				},
+				{
+					"id": 35,
+					"name": [
+						"lurk"
+					],
+					"response": [
+						{
+							"type": "audio",
+							"src": "https://banieldadcliffe.github.io/BrowserSourced/media/daddy.ogg"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "redeems",
+			"data": [
+				{
+					"id": "933bdcd8-e29d-43d4-97eb-2155dbc54683",
+					"name": [
+						"First"
+					],
+					"response": [
+						{
+							"text": "$(first)",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				},
+				{
+					"id": "b5c4da75-3eb7-454d-8235-568d3e64669c",
+					"name": [
+						"Hydrate"
+					],
+					"response": [
+						{
+							"text": "$(fx hydrate)",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				},
+				{
+					"id": "5b1fb562-7085-40f8-8f76-3c212f73aed4",
+					"name": [
+						"Stats"
+					],
+					"response": [
+						{
+							"text": "$(user) -> trauma: $(random -1 10)/10, mental health: $(random -1 10)/10, physical health: $(random -1 10)/10, heterosexuality: $(random -1 100)%, pp: $(fxset stats)!",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				},
+				{
+					"id": "fb9bb378-adce-4074-8200-59d9bd79f50f",
+					"name": [
+						"Daily Piggu"
+					],
+					"response": [
+						{
+							"text": "/me $(user) claimed their daily piggu! They now have at least $(daily)! $(fx assclappers)",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				},
+				{
+					"id": "60cc859f-0a8d-4a3b-bf08-449f2343f63f",
+					"name": [
+						"ScotchPig Out of Context"
+					],
+					"response": [
+						{
+							"text": "$(fxset ooc)",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				},
+				{
+					"id": "281d07fb-e2d2-48e5-ae97-faf68d4f9505",
+					"name": [
+						"TTS"
+					],
+					"response": [
+						{
+							"text": "",
+							"isReply": false,
+							"account": "bot"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "keywords",
+			"data": [
+				{
+					"id": 0,
+					"name": [
+						"egg"
+					],
+					"response": [
+						{
+							"text": "scotch26Eggbert",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "keywords_case_sensitive",
+			"data": []
+		},
+		{
+			"key": "commands",
+			"data": [
+				{
+					"id": 0,
+					"name": [
+						"addcommand"
+					],
+					"response": [
+						{
+							"text": "$(addcommand $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 1,
+					"name": [
+						"editcommand"
+					],
+					"response": [
+						{
+							"text": "$(editcommand $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": [
+						"delcommand"
+					],
+					"response": [
+						{
+							"text": "$(delcommand $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 3,
+					"name": [
+						"commands",
+						"command"
+					],
+					"response": [
+						{
+							"text": "Have you tried the !clip command?",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 4,
+					"name": [
+						"addquote"
+					],
+					"response": [
+						{
+							"text": "$(addquote $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 5,
+					"name": [
+						"editquote"
+					],
+					"response": [
+						{
+							"text": "$(editquote $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 6,
+					"name": [
+						"delquote"
+					],
+					"response": [
+						{
+							"text": "$(delquote $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 7,
+					"name": [
+						"quote",
+						"quotes"
+					],
+					"response": [
+						{
+							"text": "$(quote $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 8,
+					"name": [
+						"setgame",
+						"setcategory",
+						"setcat",
+						"game",
+						"category"
+					],
+					"response": [
+						{
+							"text": "$(setgame $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						},
+						{
+							"text": "$(category $(tochannel))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 9,
+					"name": [
+						"settitle",
+						"title"
+					],
+					"response": [
+						{
+							"text": "$(settitle $(query))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						},
+						{
+							"text": "$(title $(tochannel))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 10,
+					"name": [
+						"followcount",
+						"followercount"
+					],
+					"response": [
+						{
+							"text": "$(channel) has $(followcount) followers",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": [
+						"accountage"
+					],
+					"response": [
+						{
+							"text": "$(accountage $(touser))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 12,
+					"name": [
+						"followage"
+					],
+					"response": [
+						{
+							"text": "$(followage $(touser))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 13,
+					"name": [
+						"time"
+					],
+					"response": [
+						{
+							"text": "It is currently $(time Australia/Queensland) for $(channel).",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 14,
+					"name": [
+						"so"
+					],
+					"response": [
+						{
+							"text": "$(shoutout $(tochannel))",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "moderator"
+						}
+					]
+				},
+				{
+					"id": 15,
+					"name": [
+						"clip"
+					],
+					"response": [
+						{
+							"text": "$(clip)",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 16,
+					"name": [
+						"watchtime"
+					],
+					"response": [
+						{
+							"text": "Twitch does not provide this information.",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 17,
+					"name": [
+						"lurk"
+					],
+					"response": [
+						{
+							"text": "$(exit)",
+							"isReply": false,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 18,
+					"name": [
+						"raid"
+					],
+					"response": [
+						{
+							"text": "/me subs:",
+							"isReply": null,
+							"account": "bot",
+							"userlevel": "everyone"
+						},
+						{
+							"text": "/me BIG PIG RAID scotch26Raid BIG PIG RAID scotch26Raid BIG PIG RAID scotch26Raid BIG PIG RAID scotch26Raid BIG PIG RAID scotch26Raid",
+							"isReply": null,
+							"account": "bot",
+							"userlevel": "everyone"
+						},
+						{
+							"text": "/me nonsubs:",
+							"isReply": null,
+							"account": "bot",
+							"userlevel": "everyone"
+						},
+						{
+							"text": "/me BIG PIG RAID Lechonk BIG PIG RAID Lechonk BIG PIG RAID Lechonk BIG PIG RAID Lechonk BIG PIG RAID Lechonk",
+							"isReply": null,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 19,
+					"name": [
+						"rate"
+					],
+					"response": [
+						{
+							"text": "Official $(query) rating: $(random -1 10)/10!",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 20,
+					"name": [
+						"rateme"
+					],
+					"response": [
+						{
+							"text": "Scotchy gives $(user) $(random -1 10)/10!",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 21,
+					"name": [
+						"rigged"
+					],
+					"response": [
+						{
+							"text": "It was $(random 0 100)% rigged.",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 22,
+					"name": [
+						"phone"
+					],
+					"response": [
+						{
+							"text": "Scotchy has checked his phone $(count phone) times!",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 23,
+					"name": [
+						"tip"
+					],
+					"response": [
+						{
+							"text": "https://streamlabs.com/scotchpig/tip",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 24,
+					"name": [
+						"dance"
+					],
+					"response": [
+						{
+							"text": "scotch26Dance scotch26Dance scotch26Dance",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 25,
+					"name": [
+						"hype"
+					],
+					"response": [
+						{
+							"text": "scotch26Hype scotch26Dance scotch26Hype scotch26Dance scotch26Hype",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 26,
+					"name": [
+						"merch"
+					],
+					"response": [
+						{
+							"text": "https://scotchpig.com",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 27,
+					"name": [
+						"socials",
+						"hung",
+						"onlyfans"
+					],
+					"response": [
+						{
+							"text": "https://linktr.ee/scotchpig",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 28,
+					"name": [
+						"youtube",
+						"yt"
+					],
+					"response": [
+						{
+							"text": "https://youtube.com/@scotchpig",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 29,
+					"name": [
+						"throne"
+					],
+					"response": [
+						{
+							"text": "https://throne.com/scotchpig",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 30,
+					"name": [
+						"juicd"
+					],
+					"response": [
+						{
+							"text": "Want to energize your gaming sessions with Juicd!? Use code SCOTCHPIG to receive 10% off all orders! Thankyou for your support!! https://bit.ly/3dI5lMo",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": [
+						"fed"
+					],
+					"response": [
+						{
+							"text": "In case of an investigation by any federal entity or similar, I do not have any involvement with this group or with the people in it, I do not know how I am here, probably added by a third party, I do not support any actions by the member of this group.",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 32,
+					"name": [
+						"hug"
+					],
+					"response": [
+						{
+							"text": "/me $(user) hugs $(toUser)! BearHug",
+							"isReply": false,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 33,
+					"name": [
+						"band"
+					],
+					"response": [
+						{
+							"text": "https://open.spotify.com/album/2WUbMSn4TOSIFtvjXYqpwS",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 35,
+					"name": [
+						"discord"
+					],
+					"response": [
+						{
+							"text": "https://discord.gg/WMzsxu4ev6",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 36,
+					"name": [
+						"fractal"
+					],
+					"response": [
+						{
+							"text": "If you're looking to upgrade your PC, check out our hardware partner Fractal at https://bit.ly/3vnw0Xs",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				},
+				{
+					"id": 37,
+					"name": [
+						"razer"
+					],
+					"response": [
+						{
+							"text": "https://razer.a9yw.net/c/3234729/642901/10229",
+							"isReply": true,
+							"account": "bot",
+							"userlevel": "everyone"
+						}
+					]
+				}
+			]
+		}
+	]
+}
