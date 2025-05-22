@@ -13,13 +13,13 @@ class BS {
 				"type": "twitch",
 				"name": "broadcaster",
 				"token": params.get('a'),
-				"client": "4myljx99qvgdusksplltrj85hazw67"
+				"client": "ta7qi6kfksuukl1b91yya0hq69tvqj"
 			},
 			{
 				"type": "twitch",
 				"name": "bot",
 				"token": params.get('b'),
-				"client": "4myljx99qvgdusksplltrj85hazw67"
+				"client": "ta7qi6kfksuukl1b91yya0hq69tvqj"
 			},
 			{
 				"type": "aws",
